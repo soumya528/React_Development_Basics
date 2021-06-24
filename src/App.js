@@ -11,14 +11,14 @@ function Header(props) {
 function Main(props) {
   return (
     <section>
-      <h1> Choose your {props.Toppings}</h1>
+      <h3> Choose your {props.Toppings}</h3>
     </section>
   );
 }
 function Footer(props) {
   return (
     <section>
-      <h1> Choose your {props.Desert}</h1>
+      <h3> Choose your {props.Deserts}</h3>
     </section>
   );
 }
@@ -26,8 +26,8 @@ function App() {
   return (
     <div className="App">
       <Header Food="Pizza" />
-      <Main Toppings="" />
-      <Footer Desert="" />
+      <Main Toppings="Peperoni" />
+      <Footer Deserts="Puddings" />
       <h2>Choose your magical Toppings happen!</h2>
     </div>
   );
