@@ -1,47 +1,68 @@
 import "./index.css";
 import React from "react";
+//import pizza from "./Pizza.jpg";
+//import cake from "./Cakes.png";
 
 function Header(props) {
   return (
-    <section>
+    <>
       <h1> We serve the best {props.Food}</h1>
-    </section>
+    </>
   );
 }
 function Main(props) {
   return (
-    <section style={{ textAlign: "left" }}>
-      <h3> Toppings</h3>
-      <ul>
+    <React.Fragment>
+      {/*}<img src={pizza} height={400} alt="Pizzas Mammamia" />
+       */}
+      <h3 style={{ textAlign: "left" }}>Choose your Toppings</h3>
+      <ul style={{ textAlign: "left" }}>
         {props.Topping.map((top) => (
-          <li>{top}</li>
+          <li key={top.id}>{top.title}</li>
         ))}
       </ul>
-    </section>
+    </React.Fragment>
   );
 }
 function Footer(props) {
   return (
     <section>
-      <h3 style={{ textAlign: "left" }}> Deserts </h3>
-      <ul>
+      <h3 style={{ textAlign: "left" }}>Choose your Deserts</h3>
+      <ul style={{ textAlign: "left" }}>
         {props.Desert.map((SweetTooth) => (
-          <li style={{ textAlign: "left" }}>{SweetTooth}</li>
+          <li key={SweetTooth.id}>{SweetTooth.title}</li>
         ))}
       </ul>
-      <p style={{ textAlign: "Centre" }}> Copyright ={props.year}</p>
+      <p style={{ textAlign: "Centre" }}>Copyright {props.year}</p>
     </section>
   );
 }
-const Topping = ["Peperoni", "Sausage", "Chello Kebab", "Butter Chicken"];
-const Desert = ["Red Velvet", "Cheese Cake", "Truffles", "Firni"];
+const Topping = [
+  "Peperoni",
+  "Sausage",
+  "Chello Kebab",
+  "Butter Chicken",
+  "Minestroni"
+];
 
+const Desert = ["Red Velvet", "Cheese Cake", "Truffles", "Firni", "Waffles"];
+
+const toppingsObject = Topping.map((top, i) => ({
+  id: i,
+  title: top
+}));
+//console.log(toppingsObject);
+const desertsObject = Desert.map((SweetTooth, j) => ({
+  id: j,
+  title: SweetTooth
+}));
+//console.log(desertsObject);
 function App() {
   return (
     <div className="App">
-      <Header Food="Pizza" />
-      <Main Topping={Topping} />
-      <Footer Desert={Desert} year={new Date().getFullYear()} />
+      <Header Food="Pizzas" />
+      <Main Topping={toppingsObject} />
+      <Footer Desert={desertsObject} year={new Date().getFullYear()} />
     </div>
   );
 }
