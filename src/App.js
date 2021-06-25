@@ -1,7 +1,7 @@
 import "./index.css";
 import React from "react";
-//import pizza from "./Pizza.jpg";
-//import cake from "./Cakes.png";
+import pizza from "./Pizza.jpg";
+import cake from "./Cakes.png";
 
 function Header(props) {
   return (
@@ -13,10 +13,9 @@ function Header(props) {
 function Main(props) {
   return (
     <React.Fragment>
-      {/*}<img src={pizza} height={400} alt="Pizzas Mammamia" />
-       */}
       <h3 style={{ textAlign: "left" }}>Choose your Toppings</h3>
-      <ul style={{ textAlign: "left" }}>
+      <img src={pizza} height={400} alt="Pizzas Mammamia" />
+     <ul style={{ textAlign: "left" }}>
         {props.Topping.map((top) => (
           <li key={top.id}>{top.title}</li>
         ))}
@@ -28,6 +27,7 @@ function Footer(props) {
   return (
     <section>
       <h3 style={{ textAlign: "left" }}>Choose your Deserts</h3>
+      <img src={cake} height={400} alt="Pizzas Mammamia" />
       <ul style={{ textAlign: "left" }}>
         {props.Desert.map((SweetTooth) => (
           <li key={SweetTooth.id}>{SweetTooth.title}</li>
@@ -59,7 +59,9 @@ const desertsObject = Desert.map((SweetTooth, j) => ({
 //console.log(desertsObject);
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{ 
+      backgroundImage: `url("./Pizza.jpg")` 
+    }}>
       <Header Food="Pizzas" />
       <Main Topping={toppingsObject} />
       <Footer Desert={desertsObject} year={new Date().getFullYear()} />
